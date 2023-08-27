@@ -9,6 +9,7 @@ buildingColor    = Color(98,114,164,255)
 buildingSize     = 10
 pointA           = (0, 0)
 pointB           = (0, 0)
+
 #basic initiation
 set_trace_log_level(LOG_NONE)
 ScreenWidth,ScreenHeight = 810,410
