@@ -1,6 +1,5 @@
 # map is with 0s and 1s for walls and clear path
 # info is with 1,2,3,4 for different shapes
-# x = 40||80,y = 20||40
 from pyray import *
 import random
 
@@ -24,6 +23,10 @@ class Maze:
                         draw_rectangle_lines(j*self.size, i*self.size, self.size, self.size, Color(98,114,164,255))
                     else:
                         draw_rectangle(j*self.size, i*self.size, self.size, self.size, buildingColor)
+                    
+    def regen(self):
+        self.createInfo()
+        self.translateInfo()
                         
     def createInfo(self):
         self.info = []
