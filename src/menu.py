@@ -1,26 +1,29 @@
 from pyray import *
 
 listMainMenu = ["Game","Settings","About","Quit"]
-listLevelMenu = ["Game 1","Game 2","Game 3"]
-listLevelMenuAbout = ["Game 1 instruction","Game 2 instruction","Game 3 instruction"]
+listLevelMenu = ["Gaze","Rapid"]
+listLevelMenuAbout = ["Agame to go all out and take your\ntime and enjoy.","A rapid fire round to go fast and collect all the\npoints in limited time."]
 listSettingMenu = ["Color","Reset","Mute"]
 listAboutMenu = ["Ajesh","Gaurangi","Subhranil","About Me"]
-listAboutMenuAbout = ["Name : Ajesh Sharma\nRegistration Number : RA2211026010383\nContribution : Coding (in Python)",
-                  "Name : Gaurangi Rohilla\nRegistration Number : RA2211026010392\nContribution : GUI & Database",
-                  "Name : Subhranil Ghosh\nRegistration Number : RA2211026010385\nContribution : Coding (in Java)",
-                  "Made For : Advanced Programming Practice\nProgramming Language : Python\nSemester : 3rd\nLicense : MIT"]
-listColors = [["Peach",Color(120,66,89,255),Color(185,78,86,255)],
-              ["Purple",Color(43,18,76,255), Color(133,79,108,255)],
-              ["Terra",Color(30,31,70,255), Color(202,49,63,255)],
-              ["Ocean",Color(7,46,51,255) , Color(15,150,156,255)],
-              ["Discord",Color(33,34,44,255),Color(98,114,164,255)]]
-
-
+listAboutMenuAbout = [  "Name : Ajesh Sharma\nRegistration Number : RA2211026010383\nContribution : Coding (in Python)",
+                        "Name : Gaurangi Rohilla\nRegistration Number : RA2211026010392\nContribution : GUI & Database",
+                        "Name : Subhranil Ghosh\nRegistration Number : RA2211026010385\nContribution : Coding (in Java)",
+                        "Made For : Advanced Programming Practice\nProgramming Language : Python\nSemester : 3rd\nLicense : MIT"]
+listColors = [["Peach",  Color(120,66,89,255), Color(185,78,86,255)],
+              ["Purple", Color(43,18,76,255),  Color(133,79,108,255)],
+              ["Terra",  Color(30,31,70,255),  Color(202,49,63,255)],
+              ["Ocean",  Color(7,46,51,255) ,  Color(15,150,156,255)],
+              ["Discord",Color(33,34,44,255),  Color(98,114,164,255)]]
+needMenu = True
 colorOption = 2
 ColorF = listColors[colorOption][2]
 ColorB = listColors[colorOption][1]
 lineThick = 5
 font = 50
+playerid = 0
+level1Score = 0
+level2Score = 0
+level3Score = 0
 rec = Rectangle(0,150,1280,720-150)
 subrec = Rectangle(rec.x,rec.y,int(rec.width/4),rec.height)
 suprec = Rectangle(rec.x + int(rec.width/4),rec.y,int(rec.width/4),rec.height)
@@ -148,11 +151,13 @@ def settingColor():
                 ColorB = listColors[colorOption][1]
 
 def playButton():
+    global needMenu
     temp = Rectangle(int(desrec.x),int(desrec.height - 150 + desrec.y),int(desrec.width),150)
     if check_collision_point_rec(get_mouse_position(),temp):
         if (is_mouse_button_down(0)):
             #selected
             drawMS("Play",temp)
+            needMenu = False
             
         else:
             #hover

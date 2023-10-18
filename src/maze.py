@@ -2,8 +2,10 @@
 # info is with 1,2,3,4 for different shapes
 from pyray import *
 import random
+import src.menu
+src.menu.ColorF
 
-buildingColor    = Color(98,114,164,255)
+
 class Maze:
     def __init__(self,x,y,size):
         self.x = x
@@ -20,11 +22,14 @@ class Maze:
             for j in range(self.x + 1):
                 if self.map[i][j]:
                     if (is_key_down(KEY_SPACE)):
-                        draw_rectangle_lines(j*self.size, i*self.size, self.size, self.size, Color(98,114,164,255))
+                        draw_rectangle_lines(j*self.size, i*self.size, self.size, self.size, src.menu.ColorF)
                     else:
-                        draw_rectangle(j*self.size, i*self.size, self.size, self.size, buildingColor)
+                        draw_rectangle(j*self.size, i*self.size, self.size, self.size, src.menu.ColorF)
                     
-    def regen(self):
+    def regen(self,x,y,size):
+        self.x = x
+        self.y = y
+        self.size = size
         self.createInfo()
         self.translateInfo()
                         
